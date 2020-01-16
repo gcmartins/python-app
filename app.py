@@ -5,9 +5,14 @@ import service
 app = Flask(__name__)
 
 
-@app.route('/<numero>')
-def main(numero):
-    return jsonify({'extenso': service.extenso(int(numero))})
+@app.route('/<numero_str>')
+def main(numero_str):
+    try:
+        extenso = service.extenso(numero_str)
+    except (ValueError,TypeError) as err:
+        return jsonify({'error': err.args[0]}), 400
+
+    return jsonify({'extenso': extenso})
 
 
 if __name__ == "__main__":

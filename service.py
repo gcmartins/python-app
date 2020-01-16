@@ -1,9 +1,14 @@
 from utils import dicionario
 
 
-def extenso(numero):
+def extenso(numero_str):
+    try:
+        numero = int(numero_str)
+    except:
+        raise TypeError('Argumento invalido: {}'.format(numero_str))
+
     if (numero < -99999) | (numero > 99999):
-        raise IOError
+        raise ValueError('Numero fora da faixa permitida: [-99999, 99999]')
 
     sinal = ''
     if numero < 0:
