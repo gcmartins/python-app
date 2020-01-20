@@ -1,5 +1,5 @@
 FROM python
-MAINTAINER Gustavo Martins
+LABEL maintainer="Gustavo Martins"
 COPY . /var/www
 WORKDIR /var/www
 RUN pip install flask
