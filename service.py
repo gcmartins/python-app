@@ -35,6 +35,8 @@ def milhar_extenso(numero, sinal):
 
 
 def centena_extenso(numero):
+    if numero == 100:
+        return 'cem'
     tamanho = len(str(numero))
     if (tamanho <= 2) & (numero < 20):
         return dicionario[numero]
@@ -43,8 +45,6 @@ def centena_extenso(numero):
     chave = int(numero / 10 ** expoente) * 10 ** expoente
     resto = numero % (10 ** expoente)
     if resto == 0:
-        if chave == 100:
-            return 'cem'
         return dicionario[chave]
     else:
         return dicionario[chave] + ' e ' + centena_extenso(resto)
